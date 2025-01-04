@@ -9,6 +9,15 @@ To implement  T flipflop using verilog and validating their functionality using 
 Quartus prime
 
 **THEORY**
+T Flip-Flop
+
+T flip-flop is the simplified version of JK flip-flop. It is obtained by connecting the same input ‘T’ to both inputs of JK flip-flop. It operates with only positive clock transitions or negative clock transitions. The circuit diagram of T flip-flop is shown in the following figure.
+
+
+
+This circuit has single input T and two outputs Qtt & Qtt’. The operation of T flip-flop is same as that of JK flip-flop. Here, we considered the inputs of JK flip-flop as J = T and K = T in order to utilize the modified JK flip-flop for 2 combinations of inputs. So, we eliminated the other two combinations of J & K, for which those two values are complement to each other in T flip-flop. The following table shows the state table of T flip-flop.
+
+Here, Qtt & Qt+1t+1 are present state & next state respectively. So, T flip-flop can be used for one of these two functions such as Hold, & Complement of present state based on the input conditions, when positive transition of clock signal is applied. The following table shows the characteristic table of T flip-flop. Inputs Present State Next State
 
 **T Flip-Flop**
 
@@ -28,15 +37,36 @@ From the above characteristic table, we can directly write the next state equati
 
 **Procedure**
 
-/* write all the steps invloved */
+Type the program in Quartus software.
+Compile and run the program.
+Generate the RTL schematic and save the logic diagram.
+Create nodes for inputs and outputs to generate the timing diagram.
+For different input combinations generate the timing diagram.
 
 **PROGRAM**
 
-/* Program for flipflops and verify its truth table in quartus using Verilog programming. Developed by: RegisterNumber:
+/* Program for flipflops and verify its truth table in quartus using Verilog programming. Developed by: omkar varma s. RegisterNumber:24008163
 */
+module t_ff_ (t, clk, rst, q);
+  input t, clk, rst;
+  output reg q;
+
+  always @(posedge clk or posedge rst) 
+begin
+    if (rst)
+      q <= 0; // Reset the flip-flop
+    else if (t==0)
+      q <= q; 
+     else
+        q<=~q;
+  end
+endmodule
 
 **RTL LOGIC FOR FLIPFLOPS**
+![394706904-8bd93479-8820-4bf0-a041-cc745cd45903](https://github.com/user-attachments/assets/3531ebd9-49a7-4411-9271-2a0516c9116a)
 
 **TIMING DIGRAMS FOR FLIP FLOPS**
+![394706941-b179e0e8-920a-41f5-9eb0-8b84e280016f](https://github.com/user-attachments/assets/0d0b531a-d3ab-49e6-a2e3-0a0ebbb7fac8)
 
 **RESULTS**
+The T flipflop is implemented using verilog and their functionality using their functional tables is validated.
